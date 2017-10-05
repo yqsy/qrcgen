@@ -28,5 +28,5 @@ A directory.qrc file will be generated in the current directory
 # 2. pip install
 
 ```
-pip install https://github.com/yqsy/qrcgen
+pip install git+https://github.com/yqsy/qrcgen
 ```
