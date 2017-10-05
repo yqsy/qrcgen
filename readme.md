@@ -1,3 +1,12 @@
+
+<!-- TOC -->
+
+- [1. help](#1-help)
+- [2. pip install](#2-pip-install)
+
+<!-- /TOC -->
+
+# 1. help
 This Script generates a qrc file (Qt Resource file) for the entire contents of a directory tree.
 
 
@@ -14,3 +23,10 @@ optional arguments:
   -h, --help  show this help message and exit
 
 A directory.qrc file will be generated in the current directory
+
+
+# 2. pip install
+
+```
+pip install https://github.com/yqsy/qrcgen
+```
