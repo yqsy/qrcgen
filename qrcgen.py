@@ -36,10 +36,10 @@ def valid_path(string):
         msg = "%s is not a valid directory"%string
         raise argparse.ArgumentTypeError(msg)
     return string
-    
-if __name__=="__main__":
+
+def main():
     parser = argparse.ArgumentParser(description='Generates a qrc (Qt resource file) from all files on a directory tree.',
-        epilog='A directory.qrc file will be generated in the current directory')
+    epilog='A directory.qrc file will be generated in the current directory')
     parser.add_argument('directory',metavar='directory', 
         type=valid_path,
         help='A valid path, full or local.')
@@ -52,3 +52,6 @@ if __name__=="__main__":
     prefix = args.prefix
     resname = os.path.split(args.directory)[-1]
     scan(args.directory)
+
+if __name__=="__main__":
+    main()

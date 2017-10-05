@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='qrcgen', 
-        version = '0.2', 
+        version = '0.3', 
         author = 'Flavio Codeco Coelho', 
         author_email = 'fccoelho@gmail.com', 
         url = 'http://github.com/fccoelho/qrcgen',
@@ -9,5 +9,9 @@ setup(name='qrcgen',
         zip_safe = True,
         py_modules = ['qrcgen'],
         scripts = ['qrcgen.py'],
-        license = 'GPLv3',  
+        license = 'GPLv3',
+        entry_points="""
+        [console_scripts]
+        qrcgen = qrcgen:main
+        """
       )
