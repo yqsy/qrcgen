@@ -23,15 +23,20 @@ def scan(direc):
     write_to_qrc(resources)
 
 
+END_SUFFIXS = ['.png', '.gif', '.css']
+
+
 def write_to_qrc(resources):
     """
     Write to the qrc file under the prefix specified
     """
-    with open('%s.qrc' % RESNAME.strip('/'), 'w') as f:
+    with open('%s.qrc' % PREFIX, 'w') as f:
         f.write('<RCC>\n  <qresource prefix="%s">\n' % PREFIX)
         for r in resources:
-            r = r.replace('\\', '/')
-            f.write('    <file>%s</file>\n' % r)
+            for suffix in END_SUFFIXS:
+                if r.endswith(suffix):
+                    r = r.replace('\\', '/')
+                    f.write('    <file>%s</file>\n' % r)
         f.write('  </qresource>\n</RCC>\n')
 
 
