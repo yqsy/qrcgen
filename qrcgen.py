@@ -9,6 +9,10 @@ import os
 import argparse
 import sys
 
+PARSER = None
+ARGS = None
+PREFIX = None
+RESNAME = None
 def scan(direc): 
     """
     Scan tree starting from direc
@@ -22,8 +26,8 @@ def write_to_qrc(resources):
     """
     Write to the qrc file under the prefix specified
     """
-    with open('%s.qrc'%resname.strip('/'),'w') as f:
-        f.write('<RCC>\n  <qresource prefix="%s">\n'%prefix)
+    with open('%s.qrc'%RESNAME.strip('/'),'w') as f:
+        f.write('<RCC>\n  <qresource prefix="%s">\n'%PREFIX)
         for r in resources:
             f.write('    <file>%s</file>\n'%r)
         f.write('  </qresource>\n</RCC>\n')
@@ -38,20 +42,20 @@ def valid_path(string):
     return string
 
 def main():
-    parser = argparse.ArgumentParser(description='Generates a qrc (Qt resource file) from all files on a directory tree.',
+    PARSER = argparse.ArgumentParser(description='Generates a qrc (Qt resource file) from all files on a directory tree.',
     epilog='A directory.qrc file will be generated in the current directory')
-    parser.add_argument('directory',metavar='directory', 
+    PARSER.add_argument('directory',metavar='directory', 
         type=valid_path,
         help='A valid path, full or local.')
-    parser.add_argument('prefix',metavar='prefix',
+    PARSER.add_argument('prefix',metavar='prefix',
         type=str,
         help='The prefix in the qrc file under which the resources will be available.')
 
     #~ parser.print_help()
-    args = parser.parse_args()
-    prefix = args.prefix
-    resname = os.path.split(args.directory)[-1]
-    scan(args.directory)
+    ARGS = PARSER.parse_args()
+    PREFIX = ARGS.prefix
+    RESNAME = os.path.split(ARGS.directory)[-1]
+    scan(ARGS.directory)
 
 if __name__=="__main__":
     main()
